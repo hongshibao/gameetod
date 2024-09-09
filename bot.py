@@ -197,7 +197,7 @@ class GameeTod:
                 json.dumps(daily_reward_claim_prize),
             )
             reward_type = res.json()["result"]["reward"]["type"]
-            key = "usdCents" if reward_type == "money" else reward_type
+            key = "usdCents" if reward_type in ["money", "wheelOfCash"] else reward_type
             reward = res.json()["result"]["reward"][key]
             self.log(f"{hijau}reward spin : {putih}{reward} {reward_type}")
             res = await self.http(
